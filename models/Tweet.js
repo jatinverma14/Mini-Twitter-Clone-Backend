@@ -15,6 +15,10 @@ const TweetSchema = new mongoose.Schema(
       type: Array,
       defaultValue: [],
     },
+    isEdited: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

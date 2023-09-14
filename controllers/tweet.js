@@ -26,6 +26,24 @@ export const deleteTweet = async (req, res, next) => {
   }
 };
 
+export const editTweet = async (req, res, next) => {
+  try {
+    let post = await Tweet.findById(req.params.id);
+    if (!post) {
+      return res.status(400).json("Post does not found");
+    }
+
+    post = await Tweet.findByIdAndUpdate(req.params.id, {
+      $set: req.body,
+    });
+    let updatepost = await post.save();
+    res.status(200).json(updatepost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 export const likeOrDislike = async (req, res, next) => {
   try {
     const tweet = await Tweet.findById(req.params.id);
