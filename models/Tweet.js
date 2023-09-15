@@ -10,6 +10,7 @@ const TweetSchema = new mongoose.Schema(
       type: String,
       required: true,
       max: 11000,
+      defaultValue: "",
     },
     likes: {
       type: Array,
@@ -19,6 +20,7 @@ const TweetSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    tweetImage: { type: String, defaultValue: "" },
   },
   { timestamps: true }
 );
